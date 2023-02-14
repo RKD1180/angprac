@@ -1,0 +1,16 @@
+
+
+  <mat-drawer-container class="header-container" autosize>
+    <mat-drawer #drawer opened="true" class="header-sidenav" mode="side">
+      <button routerLink="/authors" mat-button class="menu_item">
+       <span class="link-text">Authors</span>
+      </button>  
+      <button routerLink="/favorites" mat-button class="menu_item">
+      <span class="link-text"> Favorites Authors</span>
+      </button>
+    </mat-drawer>
+      <router-outlet></router-outlet>
+  </mat-drawer-container>
+
+      
+

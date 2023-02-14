@@ -1,0 +1,20 @@
+
+.grid_container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: 20px;
+    grid-gap: 20px;
+}
+.grid_item{
+    width: 30rem;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+.grid_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    padding: 1rem;
+}

@@ -1,0 +1,16 @@
+<div class="grid_container">
+  <div class="grid_item" *ngFor="let item of authorsData?.results">
+    <div class="grid_item-details">
+        <h2>Name: {{item?.name}}</h2>
+        <h2>Bio: {{item?.bio.slice(0,50)}}</h2>
+    </div>
+    <div class="grid_item-action">
+      <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+        <mat-icon>bookmark</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<mat-paginator [length]="authorsData?.totalCount" (page)="onPaginateChange($event)"  [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+</mat-paginator>
+
