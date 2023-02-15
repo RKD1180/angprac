@@ -1,2 +1,7 @@
 
-    <app-list-item-component [authorsData]="authors"></app-list-item-component>
+    <app-list-item-component 
+    [authorsData]="authors"
+     [author] = "authorsData" 
+     (authorsSkip)="getNewAuthors($event)"
+     (loadData)="loadAuthors()"
+    ></app-list-item-component>

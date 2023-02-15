@@ -1,13 +1,18 @@
 <div class="grid_container">
-  <div class="grid_item" *ngFor="let item of authorsData?.results">
+  <div class="grid_item" *ngFor="let item of author; let i = index">
     <div class="grid_item-details">
         <h2>Name: {{item?.name}}</h2>
         <h2>Bio: {{item?.bio.slice(0,50)}}</h2>
     </div>
     <div class="grid_item-action">
-      <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+      <button *ngIf="item.isFav else notFav" mat-fab color="primary" (click)="addToFavorite(item,i)" aria-label="Example icon button with a bookmark icon">
         <mat-icon>bookmark</mat-icon>
       </button>
+      <ng-template #notFav>
+        <button  mat-fab color="warn" (click)="addToFavorite(item,i)" aria-label="Example icon button with a bookmark icon">
+          <mat-icon>bookmark</mat-icon>
+        </button>
+      </ng-template>
     </div>
   </div>
 </div>

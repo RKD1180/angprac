@@ -12,13 +12,14 @@ export class AuthorsService {
 
   constructor(private http:HttpClient) { }
 
-  paginationValue:any
+  favoriteAuthors:any [] = []
 
-  handlepaginationValue(data:any) {
-    this.paginationValue = data
+  addFavorites(value:any) {
+    this.favoriteAuthors.push(value)
+    localStorage.setItem('favorites', JSON.stringify(this.favoriteAuthors))
   }
 
-  getAuthors(): Observable<any>{
-    return this.http.get(`https://api.quotable.io/authors?limit=${10* this.paginationValue?.pageIndex}&skip=20`)
+  getAuthors(value:any): Observable<any>{
+    return this.http.get(`https://api.quotable.io/authors?limit=10&skip=${value}`)
   }
 }

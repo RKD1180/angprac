@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthorsService } from '../../authors.service';
 
 @Component({
@@ -8,18 +8,41 @@ import { AuthorsService } from '../../authors.service';
 })
 export class ListItemComponentComponent implements OnInit  {
       @Input() authorsData!: any
-      
+      @Input() author!: any
+      @Output() authorsSkip = new EventEmitter<any>();
+      @Output() loadData = new EventEmitter<any>();
+
+      authors:any[] = [];
 
       constructor(private authService: AuthorsService){}
 
       ngOnInit() {
-        this.authService.paginationValue
+        
       }
 
       onPaginateChange(data: any) {
-        this.authService.handlepaginationValue(data)
-        console.log(this.authService.paginationValue);
-        
+        this.authorsSkip.emit(data)
       }
+
+      addToFavorite(value: any,i:any) {
+        // console.log(value)
+      //  const getData =  this.author.find(((it:any,id:any)=> id === i))
+      //   console.log(getData);
+      //   if (getData?.isFav) {
+      //     const data = {
+      //     ...value,
+          
+      //   }
+      //   }
+        const data = {
+          ...value,
+          isFav:true
+        }
+        this.authService.addFavorites(data)
+        this.loadData.emit()
+      }
+
+   
+
       
 }
